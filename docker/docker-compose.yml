@@ -13,8 +13,6 @@ services:
             interval: 30s
             timeout: 10s
             retries: 5
-        volumes:
-            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     mysql:
         image: mysql:8
         environment:
@@ -22,7 +20,6 @@ services:
             MYSQL_USER: 'user'
             MYSQL_PASSWORD: 'password'
             MYSQL_ROOT_PASSWORD: 'password'
-        command: --init-file /data/application/init.sql
         ports:
             - "3306:3306"
         healthcheck:
@@ -30,5 +27,3 @@ services:
             interval: 30s
             timeout: 10s
             retries: 5
-        volumes:
-            - ./init.sql:/data/application/init.sql
