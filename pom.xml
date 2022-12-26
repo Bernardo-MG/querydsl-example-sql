@@ -183,7 +183,7 @@
          <properties>
             <!-- Access data -->
             <database.url>jdbc:postgresql://localhost:5432/testdb</database.url>
-            <database.username>postgres</database.username>
+            <database.username>user</database.username>
             <database.password>password</database.password>
             <!-- Spring context -->
             <spring.profile.database>postgres</spring.profile.database>

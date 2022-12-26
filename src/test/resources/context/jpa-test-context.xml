@@ -21,6 +21,5 @@
    <!-- Contexts -->
    <import resource="classpath:context/persistence/persistence.xml" />
    <import resource="classpath:context/persistence/querydsl.xml" />
-   <import resource="classpath:context/persistence/liquibase.xml" />
 
 </beans>

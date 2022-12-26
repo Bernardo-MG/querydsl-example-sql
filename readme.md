@@ -57,12 +57,10 @@ Use to start the databases:
 docker-compose -f docker/docker-compose.yml --project-name querydsl-example-sql up
 ```
 
-### Generating the metamodel
-
-With the Docker image running, the QueryDSL code can be generated:
+### Run Tests
 
 ```
-mvn clean compile -Dcodegen.skip=false
+mvn clean verify -Pmysql
 ```
 
 ### Installing
