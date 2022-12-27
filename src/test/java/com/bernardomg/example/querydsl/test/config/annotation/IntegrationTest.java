@@ -39,7 +39,6 @@ import com.bernardomg.example.querydsl.test.Application;
 
 @SpringJUnitConfig
 @SpringBootTest(classes = Application.class)
-@ActiveProfiles("test")
 @Transactional
 @Rollback
 @Retention(RetentionPolicy.RUNTIME)
