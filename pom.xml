@@ -127,7 +127,6 @@
                <!-- H2 database -->
                <groupId>com.h2database</groupId>
                <artifactId>h2</artifactId>
-               <version>${h2.version}</version>
                <scope>test</scope>
             </dependency>
          </dependencies>
@@ -149,7 +148,6 @@
                <!-- H2 database -->
                <groupId>com.h2database</groupId>
                <artifactId>h2</artifactId>
-               <version>${h2.version}</version>
                <scope>test</scope>
             </dependency>
          </dependencies>
@@ -171,7 +169,6 @@
                <!-- MySQL connector -->
                <groupId>mysql</groupId>
                <artifactId>mysql-connector-java</artifactId>
-               <version>${mysql.version}</version>
                <scope>test</scope>
             </dependency>
          </dependencies>
@@ -193,7 +190,6 @@
                <!-- Postgres connector -->
                <groupId>org.postgresql</groupId>
                <artifactId>postgresql</artifactId>
-               <version>${postgresql.version}</version>
                <scope>test</scope>
             </dependency>
          </dependencies>
@@ -223,19 +219,13 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <h2.version>1.4.200</h2.version>
-      <hikari.version>3.4.5</hikari.version>
       <javaee.api.version>2.2</javaee.api.version>
       <jaxb.version>2.3.1</jaxb.version>
       <junit.jupiter.version>5.8.0</junit.jupiter.version>
-      <liquibase.version>4.4.3</liquibase.version>
       <log4j.version>2.14.1</log4j.version>
-      <mysql.version>8.0.21</mysql.version>
-      <postgresql.version>42.2.24</postgresql.version>
       <querydsl.version>5.0.0</querydsl.version>
-      <slf4j.version>2.0.0-alpha5</slf4j.version>
-      <spring.version>5.3.10</spring.version>
-      <snakeyaml.version>1.29</snakeyaml.version>
+      <spring.version>5.3.23</spring.version>
+      <spring.boot.version>2.7.4</spring.boot.version>
       <!-- ============================================== -->
       <!-- ============ PLUGIN CONFIGURATION ============ -->
       <!-- ============================================== -->
@@ -258,14 +248,6 @@
    <dependencyManagement>
       <dependencies>
          <dependency>
-            <!-- JUnit BOM -->
-            <groupId>org.junit</groupId>
-            <artifactId>junit-bom</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-         </dependency>
-         <dependency>
             <!-- Spring Framework BOM -->
             <groupId>org.springframework</groupId>
             <artifactId>spring-framework-bom</artifactId>
@@ -274,10 +256,26 @@
             <scope>import</scope>
          </dependency>
          <dependency>
+            <!-- Spring Boot Dependencies BOM -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>${spring.boot.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+         <dependency>
             <!-- Querydsl BOM -->
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-bom</artifactId>
             <version>${querydsl.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+         <dependency>
+            <!-- JUnit BOM -->
+            <groupId>org.junit</groupId>
+            <artifactId>junit-bom</artifactId>
+            <version>${junit.jupiter.version}</version>
             <type>pom</type>
             <scope>import</scope>
          </dependency>
@@ -305,14 +303,12 @@
          <!-- Hikari CP -->
          <groupId>com.zaxxer</groupId>
          <artifactId>HikariCP</artifactId>
-         <version>${hikari.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Liquibase -->
          <groupId>org.liquibase</groupId>
          <artifactId>liquibase-core</artifactId>
-         <version>${liquibase.version}</version>
          <exclusions>
             <exclusion>
                <groupId>ch.qos.logback</groupId>
@@ -325,7 +321,6 @@
          <!-- SnakeYAML -->
          <groupId>org.yaml</groupId>
          <artifactId>snakeyaml</artifactId>
-         <version>${snakeyaml.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -372,6 +367,18 @@
          <scope>test</scope>
       </dependency>
       <dependency>
+         <!-- Spring Boot Starter: Test -->
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-test</artifactId>
+         <scope>test</scope>
+         <exclusions>
+            <exclusion>
+               <groupId>org.junit.vintage</groupId>
+               <artifactId>junit-vintage-engine</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      <dependency>
          <!-- Spring Transactions -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-tx</artifactId>
@@ -396,24 +403,27 @@
       <!-- ****************** LOGGERS ******************* -->
       <!-- ********************************************** -->
       <dependency>
-         <!-- SLF4J API -->
+         <!-- SL4J API -->
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-api</artifactId>
-         <version>${slf4j.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Log4j SLF4J Bridge -->
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-slf4j-impl</artifactId>
-         <version>${log4j.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Log4j core -->
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-core</artifactId>
-         <version>${log4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Log4j Commons Logging Bridge -->
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-jcl</artifactId>
          <scope>test</scope>
       </dependency>
       <!-- ********************************************** -->
@@ -442,10 +452,8 @@
             <!-- Test resources -->
             <directory>src/test/resources/</directory>
             <includes>
-               <!-- Filter the contexts -->
-               <include>context/**/*.xml</include>
-               <!-- Filter the properties -->
-               <include>config/**/*.properties</include>
+               <!-- Filter the application properties -->
+               <include>application.properties</include>
             </includes>
             <filtering>true</filtering>
          </testResource>
@@ -501,21 +509,6 @@
                   <version>${site.skin.version}</version>
                </dependency>
             </dependencies>
-         </plugin>
-         <plugin>
-            <!-- Resources -->
-            <!-- Handles the project resources. -->
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-resources-plugin</artifactId>
-            <configuration>
-               <!-- Variables to to override will be delimited with a @. -->
-               <!-- This avoids collisions with Spring variables. -->
-               <!-- So instead of replacing ${project.name} Maven will replace @project.name@. -->
-               <useDefaultDelimiters>false</useDefaultDelimiters>
-               <delimiters>
-                  <delimiter>@</delimiter>
-               </delimiters>
-            </configuration>
          </plugin>
       </plugins>
    </build>

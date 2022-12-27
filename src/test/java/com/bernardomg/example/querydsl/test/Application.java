@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2021 the original author or authors.
+ * Copyright (c) 2022 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,26 +22,35 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.querydsl.test.config.jpa.annotation;
+package com.bernardomg.example.querydsl.test;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Integration test annotation. Contains the common configuration for the integration tests.
+ * Application runnable class. This allows Spring Boot to run the application.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@SpringJUnitConfig(locations = { "classpath:context/jpa-test-context.xml" })
-@Transactional
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface IntegrationTest {
+@SpringBootApplication
+public class Application {
+
+    /**
+     * Runnable main method.
+     *
+     * @param args
+     *            execution parameters
+     */
+    public static void main(final String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+    /**
+     * Default constructor.
+     */
+    public Application() {
+        super();
+    }
 
 }
