@@ -235,7 +235,6 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <javaee.api.version>2.2</javaee.api.version>
       <jaxb.version>2.3.1</jaxb.version>
       <junit.jupiter.version>5.8.0</junit.jupiter.version>
       <log4j.version>2.14.1</log4j.version>
