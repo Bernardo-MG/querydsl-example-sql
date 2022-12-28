@@ -55,42 +55,6 @@ mvn verify site
 
 The verify phase is required, otherwise some of the reports won't be generated.
 
-### Installing
-
-The archetype can be installed with the following Maven coordinates:
-
-```
-Group ID: com.bernardomg.maven.archetypes
-Artifact ID: library-archetype
-Version: (Check POM or badges)
-```
-
-For example, to use it through command line type the following:
-
-```
-mvn archetype:generate -DarchetypeGroupId=com.bernardomg.maven.archetypes -DarchetypeArtifactId=library-archetype -DarchetypeVersion=[version]
-```
-
-If using an IDE check its documentation to find out how to use Maven Archetypes, and how to add these to the local repository.
-
-As an alternative, it is always possible to download the project from Github, and then install it using the usual Maven command:
-
-```
-mvn install
-```
-
-### Running tests
-
-The archetype plugin comes ready to run integration tests for the archetype by using the usual Maven command:
-
-```
-mvn verify
-```
-
-Check the [archetype testing goal][archetype-testing] for more info.
-
-If using Eclipse the tests may not run, due to an incompatibility with the Maven Invoker library. It is recommender running the tests through command line.
-
 ## Collaborate
 
 Any kind of help with the project will be well received, and there are two main ways to give such help:
