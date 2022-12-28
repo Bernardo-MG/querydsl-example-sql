@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2021 the original author or authors.
+ * Copyright (c) 2022 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,24 +22,24 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.querydsl.test.config.jpa.annotation;
+package com.bernardomg.example.querydsl.test.config.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Integration test annotation. Contains the common configuration for the integration tests.
- *
- * @author Bernardo Mart&iacute;nez Garrido
- *
- */
-@SpringJUnitConfig(locations = { "classpath:context/jpa-test-context.xml" })
+import com.bernardomg.example.querydsl.test.Application;
+
+@SpringJUnitConfig
+@SpringBootTest(classes = Application.class)
 @Transactional
+@Rollback
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface IntegrationTest {

@@ -33,7 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.jdbc.Sql;
 
 import com.bernardomg.example.querydsl.sql.metamodel.QExampleEntities;
-import com.bernardomg.example.querydsl.test.config.jpa.annotation.IntegrationTest;
+import com.bernardomg.example.querydsl.test.config.annotation.IntegrationTest;
 import com.querydsl.sql.SQLQueryFactory;
 
 @IntegrationTest

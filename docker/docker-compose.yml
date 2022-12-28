@@ -3,14 +3,13 @@ services:
     postgres:
         image: postgres:15.0-alpine
         environment:
-            PGUSER: 'postgres'
-            POSTGRES_DB: 'postgres'
-            POSTGRES_USER: 'postgres'
+            POSTGRES_DB: 'testdb'
+            POSTGRES_USER: 'user'
             POSTGRES_PASSWORD: 'password'
         ports:
             - "5432:5432"
         healthcheck:
-            test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
+            test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
             interval: 30s
             timeout: 10s
             retries: 5
@@ -21,7 +20,6 @@ services:
             MYSQL_USER: 'user'
             MYSQL_PASSWORD: 'password'
             MYSQL_ROOT_PASSWORD: 'password'
-        command: --init-file /data/application/init.sql
         ports:
             - "3306:3306"
         healthcheck:
@@ -29,5 +27,3 @@ services:
             interval: 30s
             timeout: 10s
             retries: 5
-        volumes:
-            - ./init.sql:/data/application/init.sql
