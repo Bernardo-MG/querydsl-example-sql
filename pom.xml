@@ -214,7 +214,6 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <jaxb.version>2.3.1</jaxb.version>
       <junit.jupiter.version>5.8.0</junit.jupiter.version>
       <log4j.version>2.14.1</log4j.version>
       <querydsl.version>5.0.0</querydsl.version>
@@ -418,16 +417,6 @@
          <!-- Log4j Commons Logging Bridge -->
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-jcl</artifactId>
-         <scope>test</scope>
-      </dependency>
-      <!-- ********************************************** -->
-      <!-- ************ VERSION ENFORCEMENT ************* -->
-      <!-- ********************************************** -->
-      <dependency>
-         <!-- JAXB API -->
-         <groupId>javax.xml.bind</groupId>
-         <artifactId>jaxb-api</artifactId>
-         <version>${jaxb.version}</version>
          <scope>test</scope>
       </dependency>
    </dependencies>
