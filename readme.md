@@ -73,11 +73,11 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 ## License
 The project has been released under the [MIT License][license].
 
-[issues]: https://github.com/Bernardo-MG/querydsl-example-jpa/issues
+[issues]: https://github.com/Bernardo-MG/querydsl-example-sql/issues
 [license]: https://www.opensource.org/licenses/mit-license.php
-[scm]: https://github.com/Bernardo-MG/querydsl-example-jpa
-[site-develop]: https://docs.bernardomg.com/development/maven/querydsl-example-jpa
-[site-release]: https://docs.bernardomg.com/maven/querydsl-example-jpa
+[scm]: https://github.com/Bernardo-MG/querydsl-example-sql
+[site-develop]: https://docs.bernardomg.com/development/maven/querydsl-example-sql
+[site-release]: https://docs.bernardomg.com/maven/querydsl-example-sql
 
 [surefire]: https://maven.apache.org/surefire/maven-surefire-plugin/
 [failsafe]: https://maven.apache.org/surefire/maven-failsafe-plugin/
