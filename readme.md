@@ -27,7 +27,7 @@ There is a profile for each database:
 - mysql
 - postgres
 
-Just run with the profile for the database to test against:
+Just run the tests with the profile desired:
 
 ```
 mvn clean verify -Pmysql
